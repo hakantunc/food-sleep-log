@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @food_log.date %>
+</p>
+
+<p>
+  <strong>Morning:</strong>
+  <%= @food_log.morning %>
+</p>
+
+<p>
+  <strong>Afternoon:</strong>
+  <%= @food_log.afternoon %>
+</p>
+
+<p>
+  <strong>Evening:</strong>
+  <%= @food_log.evening %>
+</p>
+
+<p>
+  <strong>Night:</strong>
+  <%= @food_log.night %>
+</p>
+
+<%= link_to 'Edit', edit_food_log_path(@food_log) %> |
+<%= link_to 'Back', food_logs_path %>
