@@ -4,7 +4,7 @@ class FoodLogsController < ApplicationController
   # GET /food_logs
   # GET /food_logs.json
   def index
-    @food_logs = FoodLog.all
+    @food_logs = FoodLog.order(:date).reverse_order
   end
 
   # GET /food_logs/1
