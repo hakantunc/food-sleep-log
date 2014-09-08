@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :sleep_logs
+
   resources :food_logs
 
   # The priority is based upon order of creation: first created -> highest priority.

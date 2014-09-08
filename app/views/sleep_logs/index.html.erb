@@ -1,0 +1,29 @@
+<h1>Listing sleep_logs</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Date</th>
+      <th>Sleep</th>
+      <th>Wake up</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @sleep_logs.each do |sleep_log| %>
+      <tr>
+        <td><%= sleep_log.date %></td>
+        <td><%= sleep_log.sleep %></td>
+        <td><%= sleep_log.wake_up %></td>
+        <td><%= link_to 'Show', sleep_log %></td>
+        <td><%= link_to 'Edit', edit_sleep_log_path(sleep_log) %></td>
+        <td><%= link_to 'Destroy', sleep_log, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Sleep log', new_sleep_log_path %>

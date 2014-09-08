@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  date: 2014-09-07
+  sleep: 2014-09-07 23:53:11
+  wake_up: 2014-09-07 23:53:11
+
+two:
+  date: 2014-09-07
+  sleep: 2014-09-07 23:53:11
+  wake_up: 2014-09-07 23:53:11

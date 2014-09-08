@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @sleep_log.date %>
+</p>
+
+<p>
+  <strong>Sleep:</strong>
+  <%= @sleep_log.sleep %>
+</p>
+
+<p>
+  <strong>Wake up:</strong>
+  <%= @sleep_log.wake_up %>
+</p>
+
+<%= link_to 'Edit', edit_sleep_log_path(@sleep_log) %> |
+<%= link_to 'Back', sleep_logs_path %>

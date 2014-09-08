@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140905192437) do
+ActiveRecord::Schema.define(version: 20140908045311) do
 
   create_table "food_logs", force: true do |t|
     t.date     "date"
@@ -19,6 +19,14 @@ ActiveRecord::Schema.define(version: 20140905192437) do
     t.string   "afternoon"
     t.string   "evening"
     t.string   "night"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "sleep_logs", force: true do |t|
+    t.date     "date"
+    t.datetime "sleep"
+    t.datetime "wake_up"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
