@@ -4,7 +4,7 @@ class SleepLogsController < ApplicationController
   # GET /sleep_logs
   # GET /sleep_logs.json
   def index
-    @sleep_logs = SleepLog.all
+    @sleep_logs = SleepLog.order(:date).reverse_order
   end
 
   # GET /sleep_logs/1
