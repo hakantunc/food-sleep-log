@@ -28,7 +28,7 @@ class FoodLogsController < ApplicationController
 
     respond_to do |format|
       if @food_log.save
-        format.html { redirect_to @food_log, notice: 'Food log was successfully created.' }
+        format.html { redirect_to root_path, notice: 'Food log was successfully created.' }
         format.json { render :show, status: :created, location: @food_log }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class FoodLogsController < ApplicationController
   def update
     respond_to do |format|
       if @food_log.update(food_log_params)
-        format.html { redirect_to @food_log, notice: 'Food log was successfully updated.' }
+        format.html { redirect_to root_path, notice: 'Food log was successfully updated.' }
         format.json { render :show, status: :ok, location: @food_log }
       else
         format.html { render :edit }

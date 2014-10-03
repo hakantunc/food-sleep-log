@@ -16,19 +16,19 @@
     <%= f.date_select :date %>
   </div>
   <div class="field">
-    <%= f.label :morning %><br>
+    <%= f.label :morning.to_s + " 6am-12pm" %><br>
     <%= f.text_field :morning %>
   </div>
   <div class="field">
-    <%= f.label :afternoon %><br>
+    <%= f.label :afternoon.to_s + " 12pm-4pm" %><br>
     <%= f.text_field :afternoon %>
   </div>
   <div class="field">
-    <%= f.label :evening %><br>
+    <%= f.label :evening.to_s + " 4pm-8pm" %><br>
     <%= f.text_field :evening %>
   </div>
   <div class="field">
-    <%= f.label :night %><br>
+    <%= f.label :night.to_s + " 8pm-6am" %><br>
     <%= f.text_field :night %>
   </div>
   <div class="actions">
