@@ -28,7 +28,7 @@ class SleepLogsController < ApplicationController
 
     respond_to do |format|
       if @sleep_log.save
-        format.html { redirect_to root_path, notice: 'Sleep log was successfully created.' }
+        format.html { redirect_to sleep_logs_path, notice: 'Sleep log was successfully created.' }
         format.json { render :show, status: :created, location: @sleep_log }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class SleepLogsController < ApplicationController
   def update
     respond_to do |format|
       if @sleep_log.update(sleep_log_params)
-        format.html { redirect_to root_path, notice: 'Sleep log was successfully updated.' }
+        format.html { redirect_to sleep_logs_path, notice: 'Sleep log was successfully updated.' }
         format.json { render :show, status: :ok, location: @sleep_log }
       else
         format.html { render :edit }
