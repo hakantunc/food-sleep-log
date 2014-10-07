@@ -3,12 +3,19 @@
 
 <h1>Sleep Logs</h1>
 
+<% sum = 0 %>
+<% @sleep_logs.each do |sleep_log| %>
+  <% sum = sum + (sleep_log.wake_up - sleep_log.sleep)/60/60 %>
+<% end %>
+<p>Average sleep: <%= sum/@sleep_logs.count %></p>
+
 <table>
   <thead>
     <tr>
       <th>Date</th>
       <th>Sleep</th>
       <th>Wake up</th>
+      <th>Duration</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -19,6 +26,7 @@
         <td><%= sleep_log.date %></td>
         <td><%= sleep_log.sleep %></td>
         <td><%= sleep_log.wake_up %></td>
+        <td><%= (sleep_log.wake_up - sleep_log.sleep)/60/60 %></td>
         <td><%= link_to 'Edit', edit_sleep_log_path(sleep_log) %></td>
         <td><%= link_to 'Destroy', sleep_log, method: :delete %></td>
       </tr>
