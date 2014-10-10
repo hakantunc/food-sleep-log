@@ -7,7 +7,9 @@
 <% @sleep_logs.each do |sleep_log| %>
   <% sum = sum + (sleep_log.wake_up - sleep_log.sleep)/60/60 %>
 <% end %>
-<p>Average sleep: <%= (sum/@sleep_logs.count).round 1 %></p>
+<% if @sleep_logs.count > 0 %>
+  <p>Average sleep: <%= (sum/@sleep_logs.count).round 1 %></p>
+<%end%>
 
 <table>
   <thead>
