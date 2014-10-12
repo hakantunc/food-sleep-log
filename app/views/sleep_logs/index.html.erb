@@ -8,8 +8,29 @@
   <% sum = sum + (sleep_log.wake_up - sleep_log.sleep)/60/60 %>
 <% end %>
 <% if @sleep_logs.count > 0 %>
-  <p>Average sleep: <%= (sum/@sleep_logs.count).round 1 %></p>
+  <% average_sleep_duration = (sum/@sleep_logs.count).round 1 %>
+<% else %>
+  <% average_sleep_duration = %%-% %>
 <%end%>
+
+<table>
+  <tbody>
+    <tr>
+      <td>Average sleep</td>
+      <td><%= average_sleep_duration %></td>
+    </tr>
+    <tr>
+      <td>Average sleep time</td>
+      <td><%= @average_sleep %></td>
+    </tr>
+    <tr>
+      <td>Average wakeup time</td>
+      <td><%= @average_wakeup %></td>
+    </tr>
+  </tbody>
+</table>
+
+<br />
 
 <table>
   <thead>

@@ -5,6 +5,26 @@ class SleepLogsController < ApplicationController
   # GET /sleep_logs.json
   def index
     @sleep_logs = SleepLog.order(:date).reverse_order
+    total = 0
+    total_wakeup = 0
+    @sleep_logs.each do |sleep_log|
+      total = total + sleep_log.sleep.to_i
+      total_wakeup = total_wakeup + sleep_log.wake_up.to_i
+    end
+    if @sleep_logs.count > 0
+      t = total / @sleep_logs.count
+      time = Time.at(t.to_i).to_datetime
+      @average_sleep = %%#{time.hour.to_s.rjust 2, '0'}:#{time.min.to_s.rjust 2, '0'}%
+    else
+      @average_sleep = %%-%
+    end
+    if @sleep_logs.count > 0
+      t = total_wakeup / @sleep_logs.count
+      time = Time.at(t.to_i).to_datetime
+      @average_wakeup = %%#{time.hour.to_s.rjust 2, '0'}:#{time.min.to_s.rjust 2, '0'}%
+    else
+      @average_wakeup = %%-%
+    end
   end
 
   # GET /sleep_logs/1
