@@ -4,27 +4,47 @@ class SleepLogsController < ApplicationController
   # GET /sleep_logs
   # GET /sleep_logs.json
   def index
+    def from_midnight(time)
+      from_midnight_val = time - time.midnight
+      from_midnight_val = from_midnight_val - 86400 if from_midnight_val > 43200
+      return from_midnight_val
+    end
+
     @sleep_logs = SleepLog.order(:date).reverse_order
-    total = 0
+    total_sleep = 0
     total_wakeup = 0
+    total_average = 0
     @sleep_logs.each do |sleep_log|
-      total = total + sleep_log.sleep.to_i
-      total_wakeup = total_wakeup + sleep_log.wake_up.to_i
+      total_sleep = total_sleep + from_midnight(sleep_log.sleep)
+      total_wakeup = total_wakeup + from_midnight(sleep_log.wake_up)
+      total_average = total_average + (sleep_log.wake_up - sleep_log.sleep)
     end
     if @sleep_logs.count > 0
-      t = total / @sleep_logs.count
-      time = Time.at(t.to_i).to_datetime
-      @average_sleep = %%#{time.hour.to_s.rjust 2, '0'}:#{time.min.to_s.rjust 2, '0'}%
+      ts = total_sleep / @sleep_logs.count
+      ts = 86400 + ts if ts < 0
+      sh = ts.to_i/60/60
+      sm = ts.to_i/60%60
+      @average_sleep = %%#{sh.to_s.rjust 2, '0'}:#{sm.to_s.rjust 2, '0'}%
     else
       @average_sleep = %%-%
     end
     if @sleep_logs.count > 0
-      t = total_wakeup / @sleep_logs.count
-      time = Time.at(t.to_i).to_datetime
-      @average_wakeup = %%#{time.hour.to_s.rjust 2, '0'}:#{time.min.to_s.rjust 2, '0'}%
+      ts = total_wakeup / @sleep_logs.count
+      ts = 86400 + ts if ts < 0
+      sh = ts.to_i/60/60
+      sm = ts.to_i/60%60
+      @average_wakeup = %%#{sh.to_s.rjust 2, '0'}:#{sm.to_s.rjust 2, '0'}%
     else
       @average_wakeup = %%-%
     end
+
+    if @sleep_logs.count > 0
+      ts = total_average / @sleep_logs.count
+      @average_sleep_duration = %%#{ts.to_i / 60 / 60} hours #{ts.to_i / 60 % 60} mins%
+    else
+      @average_sleep_duration = %%-%
+    end
+
   end
 
   # GET /sleep_logs/1
